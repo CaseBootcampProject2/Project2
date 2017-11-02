@@ -1,0 +1,43 @@
+CREATE DATABASE spa_db;
+
+USE spa_db;
+
+CREATE TABLE customer(
+customerID INTEGER NOT NULL AUTO_INCREMENT,
+firstName VARCHAR (250) NOT NULL,
+lastName VARCHAR (250) NOT NULL,
+email VARCHAR (250) NOT NULL,
+passsword VARCHAR (250) NOT NULL,
+PRIMARY KEY (customerID)
+);
+
+CREATE TABLE employee(
+employeeID INTEGER NOT NULL AUTO_INCREMENT,
+firstName VARCHAR (250) NOT NULL,
+lastName VARCHAR (250) NOT NULL,
+email VARCHAR (250) NOT NULL,
+passsword VARCHAR (250) NOT NULL,
+PRIMARY KEY (employeeID)
+);
+
+CREATE TABLE role(
+roleID INTEGER NOT NULL AUTO_INCREMENT,
+service VARCHAR (250) NOT NULL,
+roleType VARCHAR (250) NOT NULL,
+employeeID INTEGER NOT NULL,
+PRIMARY KEY (roleID),
+FOREIGN KEY (employeeID) REFERENCES employee(employeeID)
+);
+
+CREATE table appointment(
+appointmentID INTEGER NOT NULL AUTO_INCREMENT,
+employeeID INTEGER NOT NULL,
+customerID INTEGER NOT NULL,
+roleID INTEGER NOT NULL,
+PRIMARY KEY (appointmentID),
+FOREIGN KEY (employeeID) REFERENCES employee(employeeID),
+FOREIGN KEY (customerID) REFERENCES customer(customerID),
+FOREIGN KEY (roleID) REFERENCES role(roleID),
+appointmentTime TIMESTAMP
+);
+
