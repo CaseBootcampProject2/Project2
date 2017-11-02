@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>*NAME* Day Spa</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+</head>
+
+<body>
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="appointment.html">Appointment</a>
+        <a href="contact.html">Contact</a>
+    </div>
+    <div class="jumbotron jumbotron-fluid head">
+        <h1>*NAME* Day Spa</h1>
+        <span class="menu" style="text-align:center;float:left;font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Menu</span>
+    </div>
+    <div style="background-color: #111;color: white;" class="contact jumbotron form-jumbotron">
+        <div align="center" id="contact-container">
+            <div>
+                <h3>Make an Appointment</h3>
+            </div>
+            <br/>
+            <form id="myForm" data-toggle="validator" role="form" method="post" action="app_thanks.html">
+                <div class="controls">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="form_name">First Name</label>
+                                <input id="form_name" type="text" class="form-control" placeholder="Please enter your first name *" data-error="First Name" required>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="form_lastname">Last Name</label>
+                                <input id="form_lastname" type="text" class="form-control" placeholder="Please enter your last name *" data-error="Last Name" required>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="form_email">Email</label>
+                                <input id="form_email" type="email" class="form-control" placeholder="Please enter your email *" data-error="Valid Email Address" required>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="form_phone">Phone Number</label>
+                                <input id="form_phone" type="tel" class="form-control" placeholder="Please enter your phone number">
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+                         <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="form_phone">Pick a Date</label>
+                                <input id="form_phone" type="date" class="form-control" placeholder="Choose a date">
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="form_message">Services requested</label>
+                                <textarea id="form_message" class="form-control" placeholder="Message for me *" rows="4" data-error="Please leave us a message." required></textarea>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="form_message">Message</label>
+                                <textarea id="form_message" class="form-control" placeholder="Message for me *" rows="4" data-error="Please leave us a message." required></textarea>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <button type="submit" class=" button btn btn-primary">Send Message</button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+    <script>
+    function openNav() {
+        document.getElementById("mySidenav").style.width = "250px";
+    }
+
+    function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+    }
+    </script>
+</body>
+
+</html>
