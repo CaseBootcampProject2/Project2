@@ -1,90 +1,47 @@
 $(document).ready(function() {
 
-	var emailInput = $("#email");
-	var serviceInput = $("#service");
 	var dateInput = $("#date");
+	var serviceInput = $("#service");
+	var employeeInput = $("#employee");
+	var timeInput = $("#time");
+	var messageInput = $("#message")
 	var newAppointment = $("#new-appointment");
 
 	$(newAppointment).on("submit", createAppointment);
 
-	function createAppointment(event){
-		event.preventDefault();
-			if(!emailInput.val().trim() || !serviceInput.val().trim() || !dateInput.val().trim()) {
-			alert('Please check that you have filled in each field.');
-			return;
-		}
+// JG Revised function 11-3
 
-		var newAppointment = {
-			service: serviceInput.val().trim(),
-			date: dateInput.val().trim(),
-			// CustomerId: emailInput.val()
-			CustomerId: "1"
-		};
-		submitAppointment(newAppointment);
-	} // end of createAccount()
-
-
-	function submitAppointment(appointment) {
-		$.post("/api/appointments", appointment, function(){
-			console.log("a new appointment has been submitted.")
-		});
+function createAppointment(event){
+	event.preventDefault();
+	if(!dateInput.val().trim() || !serviceInput.val().trim() || !employeeInput.val().trim() || !timeInput.val().trim()) || !messageInput.val().trim() {
+		alert('Please check that you have filled in each field.');
+		return;
 	}
 
+	var queryurl = '/api/email/' + emailInput.val().trim();
+	console.log('here is the queryurl: ' + queryurl);
+	$.get(queryurl, function(data) {
+			// var id = data.id;
+			var newAppointment = {
+				date: dateInput.val().trim(),
+				service: serviceInput.val().trim(),
+				employee: employeeInput.val().trim(),
+				
+				date: dateInput.val().trim(),
+				CustomerId: data.id
+			};
+			submitAppointment(newAppointment);
+		});
+} // end of createAccount()
 
 
-
-
-
-
-
-
+function submitAppointment(appointment) {
+	$.post("/api/appointments", appointment, function(){
+		console.log("a new appointment has been submitted.")
+	});
+}
 
 
 
 
 }); // end document.ready
-
-
-
-
-
-
-// $(document).ready(function () {
-
-// 	var emailInput = $("#email");
-// 	var serviceInput = $("#service");
-// 	var dateInput = $("#date");
-// 	// var timeInput = $("#time");
-// 	var appointment = $("#new-appointment");
-
-// 	$(appointment).on("submit", createAppointment);
-
-
-// 	function createAppointment(event) {
-// 		event.preventDefaul();
-// 		console.log('the createAppointment function was called')
-// 		event.preventDefaul();
-// 		if (!emailInput.val().time() ||
-// 			!serviceInput.val().time() ||
-// 			!dateInput.val().time() 
-// 			// ||!timeInput.val().time()
-// 			) {
-// 			alert("Please check that no fields are empty.");
-// 			return;
-// 		}
-// 		var newAppointment = {
-// 			service: serviceInput.val().trim(),
-// 			date: dateInput.val().trim(),
-// 			// time: timeInput.val().trim(),
-// 			email: emailInput.val().trim()
-// 		};
-// 	}
-
-// 	function submitAppointment(appointment) {
-// 		$.post("/api/appointments", appointment, function() {
-// 			console.log("A new appointment has been created.")
-// 		});
-// 	}
-
-// // end of document.ready function
-// })

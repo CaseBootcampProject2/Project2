@@ -18,6 +18,7 @@ module.exports = function(app) {
         });
     });
 
+// From Jessi
     app.get("/api/allappointments", function(req, res) {
         var response = {};
         response.message = "hey";
@@ -44,6 +45,7 @@ module.exports = function(app) {
             res.json(dbEmployee);
         });
     });
+// End from Jessi
 
     app.get("/api/appointments/:id", function(req, res) {
         // Here we add an "include" property to our options in our findOne query
