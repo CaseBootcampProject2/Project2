@@ -1,16 +1,35 @@
 $(document).ready(function() {
 
+    var appointments = [];
+    var roles = [];
+
+    function getServices() {
+        $.get("api/allappointments", function(res) {
+            console.log(res);
+
+        });
+    }
+    getServices();
+
     var dateInput = $("#date");
     var serviceSelect = $("#service");
     var employeeInput = $("#employee");
-    var timeInput = $("#appointmentTime");
+    var timeInput = $("#time");
+    var messageInput = $("#message");
     var appointmentForm = $("#appointment");
 
+    $("#date").change(function() {
+        $("#serviceSelect").show();
+    });
 
 
-    function getServices() {
-        $.get("api/appointments", renderServicesList);
-    }
+
+
+    /* $(appointmentForm).on("submit", handleFormSubmit);
+
+
+
+   
 
     function renderServicesList(data) {
         if (!data.length) {
@@ -36,6 +55,6 @@ function createServicesInput(services) {
     listServices.text(roles.service);
     return listServices;
 
-}
+}*/
 
 });

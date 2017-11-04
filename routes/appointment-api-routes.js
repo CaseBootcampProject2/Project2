@@ -20,6 +20,7 @@ module.exports = function(app) {
 
 // From Jessi
     app.get("/api/allappointments", function(req, res) {
+      console.log("hi");
         var response = {};
         response.message = "hey";
         db.Employee.findAll({
