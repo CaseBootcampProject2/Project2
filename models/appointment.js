@@ -1,9 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
     var Appointment = sequelize.define("Appointment", {
-        appointmentID: DataTypes.INTEGER,
-        employeeID: DataTypes.INTEGER,
-        customerID: DataTypes.INTEGER,
-        roleID: DataTypes.INTEGER,
+        appointmentTime: DataTypes.DATE,
     });
 
     Appointment.associate = function(models) {
@@ -12,10 +9,12 @@ module.exports = function(sequelize, DataTypes) {
                 allowNull: false
             }
         });
+        Appointment.belongsTo(models.Employee, {
+            foreignKey: {
+                allowNull: false
+            }
+        });
     };
-
-
-
 
     return Appointment;
 };

@@ -1,6 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
     var Employee = sequelize.define("Employee", {
-        employeeID: DataTypes.INTEGER,
         firstName: DataTypes.STRING,
         lastName: DataTypes.STRING,
         email: DataTypes.STRING,
@@ -8,7 +7,7 @@ module.exports = function(sequelize, DataTypes) {
     });
 
     Employee.associate = function(models) {
-        Employee.belongsTo(models.Appointment, {
+        Employee.hasOne(models.Role, {
             foreignKey: {
                 allowNull: false
             }
