@@ -5,7 +5,7 @@ module.exports = function(sequelize, DataTypes) {
     });
 
     Role.associate = function(models) {
-        Role.belongsTo(models.Employee, {
+        Role.hasMany(models.Employee, {
             foreignKey: {
                 allowNull: false
             }
