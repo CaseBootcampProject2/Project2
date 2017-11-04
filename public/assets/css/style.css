@@ -1,6 +1,6 @@
 body {
     font-family: "Lato", sans-serif;
-    background-color: #111;
+    background-color: black;
     text-align: center;
     color: white;
 }
@@ -9,7 +9,7 @@ body {
 	font-size: 50px;
 }
 .home {
-	background-color: #111;
+	background-color: black;
 }
 .menu {
 	border: 1px solid white;
@@ -24,7 +24,7 @@ body {
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: #111;
+    background-color: black;
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 60px;
@@ -57,14 +57,14 @@ body {
 }
 .head {
 	text-align: center;
-	background-color: #111;
+	background-color: black;
 	color: white;
 }
 
 .contact {
 	width: 80%;
 	margin-left: 10%;
-	background-color: #111;
+	background-color: black;
 	color: white !important;
 }
 .serviceList {
