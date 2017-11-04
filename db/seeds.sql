@@ -1,23 +1,33 @@
-INSERT INTO employee (firstName, lastName, email, passsword) VALUES ("Jennifer", "Smith", "jennifer.smith@gmail.com", "password1234");
+DROP DATABASE spa_db;
 
-INSERT INTO employee (firstName, lastName, email, passsword) VALUES ("Scott", "Johnson", "scott.myers@gmail.com", "password1234");
+CREATE DATABASE spa_db;
 
-INSERT INTO employee (firstName, lastName, email, passsword) VALUES ("Sally", "Miller", "sally.miller@gmail.com", "password1234");
+USE spa_db;
 
-INSERT INTO customer (firstName, lastName, email, passsword) VALUES ("Edna", "Wilson", "edna.wilson@gmail.com", "password1234");
+INSERT INTO 
+	employees (firstName, lastName, email, password, createdAt, updatedAt, RoleId) 
+VALUES 
+	("Jennifer", "Smith", "jennifer.smith@gmail.com", "password1234", sysdate(), sysdate(), 1),
+    ("Scott", "Johnson", "scott.myers@gmail.com", "password1234", sysdate(), sysdate(), 2), 
+    ("Sally", "Miller", "sally.miller@gmail.com", "password1234", sysdate(), sysdate(), 3);
 
-INSERT INTO customer (firstName, lastName, email, passsword) VALUES ("Jessica", "Jones", "jessica.jones@gmail.com", "password1234");
+INSERT INTO 
+	customers (firstName, lastName, email, password, createdAt, updatedAt) 
+VALUES 
+	("Edna", "Wilson", "edna.wilson@gmail.com", "password1234", sysdate(), sysdate()),
+	("Jessica", "Jones", "jessica.jones@gmail.com", "password1234", sysdate(), sysdate()),
+	("William", "Anderson", "william.anderson@gmail.com", "password1234", sysdate(), sysdate());
 
-INSERT INTO customer (firstName, lastName, email, passsword) VALUES ("William", "Anderson", "william.anderson@gmail.com", "password1234");
+INSERT INTO 
+	roles (service, roleType, createdAt, updatedAt) 
+VALUES 
+	("Massage", "Masseuse", sysdate(), sysdate()),
+	("Facial", "Esthetician", sysdate(), sysdate()),
+	("Manicure", "Manicurist", sysdate(), sysdate()); 
 
-INSERT INTO role (service, roleType, employeeID) VALUES ("Massage", "Masseuse", 2);
-
-INSERT INTO role (service, roleType, employeeID) VALUES ("Facial", "Esthetician", 1); 
-
-INSERT INTO role (service, roleType, employeeID) VALUES ("Manicure", "Manicurist", 3); 
-
-INSERT INTO appointment (employeeID, customerID, roleID, appointmentTime) VALUES (1, 1, 2, '2017/11/11 10:00:00');
-
-INSERT INTO appointment (employeeID, customerID, roleID, appointmentTime) VALUES (2, 2, 1, '2017/11/15 12:00:00');
-
-INSERT INTO appointment (employeeID, customerID, roleID, appointmentTime) VALUES (3, 3, 3, '2017/11/20 09:00:00');
+INSERT INTO 
+	appointments (appointmentTime, createdAt, updatedAt, CustomerId, EmployeeId) 
+VALUES 
+	('2017/11/11 10:00:00', sysdate(), sysdate(), 1, 1),
+	('2017/11/15 12:00:00', sysdate(), sysdate(), 2, 2),
+	('2017/11/20 09:00:00', sysdate(), sysdate(), 3, 3);
