@@ -1,7 +1,11 @@
 module.exports = function(sequelize, DataTypes) {
     var Appointment = sequelize.define("Appointment", {
-        appointmentTime: DataTypes.DATE,
-    });
+    date: DataTypes.STRING,
+    service: DataTypes.STRING,
+    employee: DataTypes.STRING,
+    appointmentTime: DataTypes.STRING,
+    message: DataTypes.TEXT
+  });
 
     Appointment.associate = function(models) {
         Appointment.belongsTo(models.Customer, {

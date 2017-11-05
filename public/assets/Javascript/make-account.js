@@ -1,5 +1,4 @@
 $(document).ready(function() {
-
 	var firstNameInput = $("#first-name");
 	var lastNameInput = $("#last-name");
 	var emailInput = $("#email");
@@ -25,11 +24,11 @@ $(document).ready(function() {
 	} // end of createAccount()
 
 
-	function submitCustomer(customer) {
-		$.post("/api/customers", customer, function(){
-			console.log("a new customer has been submitted.")
-		});
-	}
+	// function submitCustomer(customer) {
+	// 	$.post("/api/customers", customer, function(){
+	// 		console.log("a new customer has been submitted.")
+	// 	});
+	// }
 
 	function submitCustomer(customer) {
 		$.post("/api/customers", customer, function(){

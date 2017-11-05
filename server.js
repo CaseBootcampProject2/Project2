@@ -17,6 +17,7 @@ app.use(express.static("public"));
 require("./routes/html-routes.js")(app);
 require("./routes/customer-api-routes.js")(app);
 require("./routes/appointment-api-routes.js")(app);
+require("./routes/employee-api-routes.js")(app);
 
 
 
