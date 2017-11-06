@@ -1,8 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
     var Appointment = sequelize.define("Appointment", {
-    date: DataTypes.STRING,
-    service: DataTypes.STRING,
-    employee: DataTypes.STRING,
     appointmentTime: DataTypes.STRING,
     message: DataTypes.TEXT
   });
