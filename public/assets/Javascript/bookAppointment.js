@@ -12,12 +12,24 @@ $(document).ready(function() {
         $("#timeSelect").hide();
         if (this.value != undefined) {
             selectedDate = new Date(this.value.replace(/-/g, "/"));
+            console.log(selectedDate)
             $("#service").empty();
             $("#service").append('<option value="" selected="selected">Select One</option>');
+            var services = [];
             employees.map(function(employee) {
-                $("#service")
-                    .append('<option value=' + employee.RoleId + '>' +
-                        employee.Role.service + '</option>');
+                var isDuplicateService = services.filter(function(service) {
+                    return service.service == employee.Role.service;
+                }).length > 0;
+
+                if (isDuplicateService == false) {
+                    services.push({
+                        roleId: employee.RoleId,
+                        service: employee.Role.service
+                    });
+                    $("#service")
+                        .append('<option value=' + employee.RoleId + '>' +
+                            employee.Role.service + '</option>');
+                }
             });
             $("#serviceSelect").show();
         }
@@ -37,7 +49,6 @@ $(document).ready(function() {
                             employee.firstName + '</option>');
                 }
             });
-
             $("#employeeSelect").show();
         }
     });
@@ -61,6 +72,10 @@ $(document).ready(function() {
                 return bookedTimes.indexOf(timeSlot.getHours()) === -1;
             });
 
+            for (i = 0; i < availableTimeSlots.length; i++) {
+                $("#time").append('<option value=' + availableTimeSlots[i].getHours() + '>' + format_time(availableTimeSlots[i]) + '</option>')
+            };
+
             $("#timeSelect").show();
         }
     });
@@ -72,6 +87,25 @@ $(document).ready(function() {
         }
     });
 
+    $("#submitButton").click(function(e) {
+        e.preventDefault();
+        selectedDate.setTime(selectedDate.getTime() + ($("#time").val()*60*60*1000));
+        $.ajax({
+                method: "POST",
+                url: "/api/createappointment",
+                data: {
+                    appointmentTime: selectedDate,
+                    message: $("#message").val(),
+                    CustomerId: "1",
+                    EmployeeId: $("#employee").val()
+                }
+            })
+            .done(function(res) {
+                console.log(res);
+            });
+    });
+
+
     function getDailyTimeSlots() {
         var dailyTimeSlots = [];
         for (var i = 9; i < 17; i++) {
@@ -82,6 +116,21 @@ $(document).ready(function() {
             dailyTimeSlots.push(apptTimeSlot);
         }
         return dailyTimeSlots;
+    }
+
+    function format_time(date_obj) { // outputs date in format "4:00pm"
+        var hour = date_obj.getHours();
+        var minute = date_obj.getMinutes();
+        var amPM = (hour > 11) ? "pm" : "am";
+        if (hour > 12) {
+            hour -= 12;
+        } else if (hour == 0) {
+            hour = "12";
+        }
+        if (minute < 10) {
+            minute = "0" + minute;
+        }
+        return hour + ":" + minute + amPM;
     }
 
     function getServices() {

@@ -18,9 +18,9 @@ module.exports = function(app) {
         });
     });
 
-// From Jessi
+    // From Jessi
     app.get("/api/allappointments", function(req, res) {
-      console.log("hi");
+        console.log("hi");
         var response = {};
         response.message = "hey";
         db.Employee.findAll({
@@ -46,7 +46,13 @@ module.exports = function(app) {
             res.json(dbEmployee);
         });
     });
-// End from Jessi
+
+    app.post("/api/createappointment", function(req, res) {
+        db.Appointment.create(req.body).then(function(dbAppointment) {
+            res.json(dbAppointment);
+        });
+    });
+    // End from Jessi
 
     app.get("/api/appointments/:id", function(req, res) {
         // Here we add an "include" property to our options in our findOne query
